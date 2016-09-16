@@ -10,7 +10,7 @@ var pointsArray = document.getElementsByClassName('point');
 var animatePoints = function(points){
     forEach(points, revealPoint);
 
-    }
+    
  };
  window.onload = function() {
        if (window.innerHeight > 950) {
