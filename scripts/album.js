@@ -19,6 +19,20 @@
      year: '1909',
      albumArtUrl: 'assets/images/album_covers/20.png',
      songs: [
+         { title: 'Doll', duration: '1:23' },
+         { title: 'Monkey Wrench', duration: '3:51' },
+         { title: 'Hey, Johnny Park', duration: '4:08'},
+         { title: 'My Poor Brain', duration: '3:33' },
+         { title: 'Wind Up', duration: '2:32'}
+     ]
+ };
+var albumFooFighters = {
+     title: 'The Colour and The Shape',
+     artist: 'Foo Fighters',
+     label: 'Roswell/Capitol',
+     year: '1997',
+     albumArtUrl: 'assets/images/album_covers/20.png',
+     songs: [
          { title: 'Hello, Operator?', duration: '1:01' },
          { title: 'Ring, ring, ring', duration: '5:01' },
          { title: 'Fits in your pocket', duration: '3:21'},
@@ -37,14 +51,13 @@
  
      return template;
  };
- var setCurrentAlbum = function(album) {
-     // #1
-     var albumTitle = document.getElementsByClassName('album-view-title')[0];
+  var albumTitle = document.getElementsByClassName('album-view-title')[0];
      var albumArtist = document.getElementsByClassName('album-view-artist')[0];
      var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
- 
+
+ var setCurrentAlbum = function(album) {
      // #2
      albumTitle.firstChild.nodeValue = album.title;
      albumArtist.firstChild.nodeValue = album.artist;
@@ -62,4 +75,14 @@
  
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+     
+     var albums = [albumPicasso, albumMarconi, albumFooFighters];
+     var index = 1;
+     albumImage.addEventListener("click", function(event) {
+         setCurrentAlbum(album[index]);
+         index++;
+         if (index == album.length) {
+             index = 0;
+         }
+     });
  };
