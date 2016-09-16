@@ -27,7 +27,7 @@
      ]
  };
 var albumFooFighters = {
-     title: 'The Colour and The Shape',
+     title: 'The Colour and git The Shape',
      artist: 'Foo Fighters',
      label: 'Roswell/Capitol',
      year: '1997',
