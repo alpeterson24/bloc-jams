@@ -76,7 +76,7 @@ var albumFooFighters = {
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
      
-     var albums = [albumPicasso, albumMarconi, albumFooFighters];
+     var album = [albumPicasso, albumMarconi, albumFooFighters];
      var index = 1;
      albumImage.addEventListener("click", function(event) {
          setCurrentAlbum(album[index]);
