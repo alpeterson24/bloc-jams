@@ -2,6 +2,11 @@ var getSongNumberCell = function(number) {
     return $('.song-item-number[data-song-number="' + number + '"]');   
 };
 
+ var setSong = function(songNumber) {
+     currentlyPlayingSongNumber = parseInt(songNumber);
+     currentSongFromAlbum = currentAlbum.songs[songNumber - 1];    
+ };
+
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -11,8 +16,6 @@ var createSongRow = function(songNumber, songName, songLength) {
       + '</tr>'
       ;
     
-    
- 
     var $row = $(template);
     
     var clickHandler = function() {
@@ -27,7 +30,7 @@ var createSongRow = function(songNumber, songName, songLength) {
             
 		$(this).html(pauseButtonTemplate);
 		setSong(songNumber);
-        currentSongFromAlbum = currentAlbum.songs[songNumber - 1]; updatePlayerBarSong();  
+        updatePlayerBarSong();  
 	} else if (currentlyPlayingSongNumber === songNumber) {
 		
 		$(this).html(playButtonTemplate);
@@ -61,11 +64,6 @@ var createSongRow = function(songNumber, songName, songLength) {
      return $row;
     
 };
-
- var setSong = function(songNumber) {
-     currentlyPlayingSongNumber = parseInt(songNumber);
-     currentSongFromAlbum = currentAlbum.songs[songNumber - 1];    
- };
      
  var setCurrentAlbum = function(album) {
      currentAlbum = album;
@@ -120,7 +118,7 @@ var nextSong = function() {
     
     // Set a new current song
     setSong(currentSongIndex + 1);
-    currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+    updatePlayerBarSong();
 
     // Update the Player Bar information
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
@@ -155,7 +153,7 @@ var previousSong = function() {
     
     // Set a new current song
     setSong(currentSongIndex + 1);
-    currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+    updatePlayerBarSong();
 
     // Update the Player Bar information
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
